@@ -30,7 +30,8 @@
 
 /* NO PLANS */
 .planpage-empty {
-  text-align: center;
+    text-align: center;
+    height: 75vh;
   color: var(--pp-text-muted);
   padding: 4rem;
   font-size: 1.2rem;
