@@ -3,3 +3,29 @@ frontend/node_modules
 .idea
 backend/.env
 frontend/.env
+
+# Prevent any .env files
+*.env
+.env.*
+!.env.sample
+
+# Deployment and secret files
+.deployed
+*.key
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/
+*.log
+npm-debug.log*
