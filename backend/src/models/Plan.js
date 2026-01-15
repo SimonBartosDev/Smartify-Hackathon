@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-// Subdocument schema for each daily task
 const DailyTaskSchema = new Schema(
     {
         day: {
@@ -33,7 +32,6 @@ const DailyTaskSchema = new Schema(
     },
 );
 
-// Main schema for the whole plan
 const PlanSchema = new Schema(
     {
         topic: {
@@ -66,7 +64,6 @@ const PlanSchema = new Schema(
             required: true,
             validate: {
                 validator: function (value) {
-                    // Optional: ensure number of items matches timeframe_days
                     return Array.isArray(value) && value.length === this.timeframe_days;
                 },
                 message: "daily_plan length must equal timeframe_days",

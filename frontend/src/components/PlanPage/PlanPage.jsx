@@ -1,13 +1,11 @@
-// PlanPage.jsx
 import React from "react";
-import "./PlanPage.css"; // You will get this file below
+import "./PlanPage.css";
 
 const PlanPage = ({ plans = [] }) => {
   if (!Array.isArray(plans) || plans.length === 0) {
     return <div className="planpage-empty">No plans available.</div>;
   }
 
-  // Utility: Capitalize things like "first-timer"
   const formatLabel = (str = "") =>
     String(str)
       .split("-")
@@ -28,7 +26,6 @@ const PlanPage = ({ plans = [] }) => {
 
         return (
           <section key={index} className="planpage-plan">
-            {/* =============== PLAN HEADER =============== */}
             <header className="planpage-header">
               <div className="planpage-header-left">
                 <h1>{topic}</h1>
@@ -59,7 +56,6 @@ const PlanPage = ({ plans = [] }) => {
               </div>
             </header>
 
-            {/* =============== DAILY PLAN GRID =============== */}
             <div className="planpage-grid">
               {daily_plan.map((day) => (
                 <article key={day.day} className="planpage-card">

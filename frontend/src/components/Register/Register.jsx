@@ -3,68 +3,65 @@ import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext.jsx";
 
-export default function Register({setId}) {
+export default function Register({ setId }) {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { setUser } = useAuth();
 
-  // Use .env in frontend: VITE_API_URL=http://localhost:8000
   const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
- async function handleSubmit(e) {
-  e.preventDefault();
-  setError(null);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
 
-  
-  const formEl = e.currentTarget;
 
-  const form = new FormData(formEl);
-  const body = {
-    username: form.get("name")?.trim(),
-    email: form.get("email")?.trim(),
-    password: form.get("password") || "",
-    rePassword: form.get("confirmPassword") || "",
-  };
+    const formEl = e.currentTarget;
 
-  if (body.password !== body.rePassword) {
-    setError("Passwords do not match.");
-    return;
-  }
+    const form = new FormData(formEl);
+    const body = {
+      username: form.get("name")?.trim(),
+      email: form.get("email")?.trim(),
+      password: form.get("password") || "",
+      rePassword: form.get("confirmPassword") || "",
+    };
 
-  setLoading(true);
-  try {
-    const res = await fetch(`${API}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(body),
-    });
-
-    const ct = res.headers.get("content-type") || "";
-    const data = ct.includes("application/json") ? await res.json() : null;
-
-    if (!res.ok) {
-      const msg = data?.message || data?.error || `Registration failed (${res.status}).`;
-      throw new Error(msg);
+    if (body.password !== body.rePassword) {
+      setError("Passwords do not match.");
+      return;
     }
 
-    // Save user in context so navbar updates immediately
-    setUser(data.user);
-    setId(data.user._id);
-    // ✅ Use the saved element (not e.currentTarget)
-    formEl.reset();
-    navigate("/create");
-  } catch (err) {
-    setError(err.message || "Something went wrong.");
-  } finally {
-    setLoading(false);
-    
+    setLoading(true);
+    try {
+      const res = await fetch(`${API}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(body),
+      });
+
+      const ct = res.headers.get("content-type") || "";
+      const data = ct.includes("application/json") ? await res.json() : null;
+
+      if (!res.ok) {
+        const msg = data?.message || data?.error || `Registration failed (${res.status}).`;
+        throw new Error(msg);
+      }
+
+      setUser(data.user);
+      setId(data.user._id);
+      formEl.reset();
+      navigate("/create");
+    } catch (err) {
+      setError(err.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+
+    }
   }
-}
 
 
   return (

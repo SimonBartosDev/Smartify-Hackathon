@@ -1,18 +1,17 @@
 import React from "react";
 import "./Preview.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PlanPage = ({ plan, id, setPlan}) => {
+const PlanPage = ({ plan, id, setPlan }) => {
     const navigate = useNavigate();
 
     const saveFunction = async () => {
         if (!plan) return;
-        if ( id== null ){
+        if (id == null) {
             navigate("/login")
-            console.log("User not logged in")
             return;
         }
-        const newPlan = { ...plan, userId: id }; // note: userID if your schema expects that!
+        const newPlan = { ...plan, userId: id };
         try {
             const res = await fetch("http://localhost:8000/api/savePlan", {
                 method: "POST",
@@ -25,14 +24,12 @@ const PlanPage = ({ plan, id, setPlan}) => {
             navigate('/plan-page')
             if (!res.ok) {
                 console.error("Failed to save plan");
-            } else {
-                console.log("Plan saved successfully");
             }
         } catch (err) {
             console.error("Error saving plan:", err);
         }
     };
-    const reworkPlan = async () =>{
+    const reworkPlan = async () => {
         navigate("/create")
     }
     if (!plan) {
@@ -56,7 +53,6 @@ const PlanPage = ({ plan, id, setPlan}) => {
 
     return (
         <div className="plan-page">
-            {/* Header */}
             <header className="plan-header">
                 <div>
                     <h1>{topic}</h1>
@@ -79,7 +75,6 @@ const PlanPage = ({ plan, id, setPlan}) => {
                     </div>
                 </div>
 
-                {/* ✅ Save button */}
                 <button className="save-button" onClick={saveFunction}>
                     Save plan
                 </button>
@@ -88,7 +83,6 @@ const PlanPage = ({ plan, id, setPlan}) => {
                 </button>
             </header>
 
-            {/* Daily Plan */}
             <section className="daily-plan">
                 {daily_plan.map((dayItem) => (
                     <article key={dayItem.day} className="day-card">
@@ -105,9 +99,8 @@ const PlanPage = ({ plan, id, setPlan}) => {
                                 </span>
                             </div>
                             <span
-                                className={`status-pill ${
-                                    dayItem.done ? "status-done" : "status-planned"
-                                }`}
+                                className={`status-pill ${dayItem.done ? "status-done" : "status-planned"
+                                    }`}
                             >
                                 {dayItem.done ? "Done" : "Planned"}
                             </span>

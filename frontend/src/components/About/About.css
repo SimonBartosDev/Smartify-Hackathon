@@ -104,6 +104,40 @@
   font-weight: 700;
 }
 
+/* CREATE PLAN BUTTON */
+.create-plan-button {
+  grid-column: 1 / 2;
+  justify-self: start;
+  margin-top: 1.5rem;
+
+  background: linear-gradient(135deg, var(--ab-blue), var(--ab-teal));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.create-plan-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, #4a9eff, #20d4c4);
+}
+
+.create-plan-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
 /* RESPONSIVE – stack vertically on small screens */
 @media (max-width: 900px) {
   .about-container {
@@ -128,5 +162,12 @@
     width: 100%;
     margin-top: 0.5rem;
     justify-self: flex-start;
+  }
+
+  .create-plan-button {
+    width: 100%;
+    max-width: 420px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 }

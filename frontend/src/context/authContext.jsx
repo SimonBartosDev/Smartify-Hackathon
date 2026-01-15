@@ -7,7 +7,6 @@ export function AuthProvider({ children }) {
 
   const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
-  // fetch logged-in user once when app starts
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -33,7 +32,7 @@ export function AuthProvider({ children }) {
     } catch (err) {
       console.error("Logout failed:", err);
     } finally {
-      setUser(null); 
+      setUser(null);
     }
   }
 
@@ -44,7 +43,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-// helper hook
 export function useAuth() {
   return useContext(AuthContext);
 }

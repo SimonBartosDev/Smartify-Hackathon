@@ -1,4 +1,3 @@
-// Basic, non-streaming
 export const getPlan = async (req, res, next) => {
 
     const systemPrompt = `
@@ -61,7 +60,6 @@ Specific user preferences: ${req.body.userPreference}
             })
         });
 
-        // Surface upstream errors clearly
         if (!resp.ok) {
             const detail = await resp.text().catch(() => "");
             return res.status(resp.status).json({ ok: false, error: `groq_${resp.status}`, detail });
@@ -74,7 +72,6 @@ Specific user preferences: ${req.body.userPreference}
             return res.status(502).json({ ok: false, error: "empty_model_output" });
         }
 
-        // Parse the JSON the model returned and send only that object
         try {
             const plan = JSON.parse(text);
             return res.status(200).json(plan);

@@ -1,13 +1,12 @@
 import { Router } from "express";
-import jwt from "jsonwebtoken";                   
+import jwt from "jsonwebtoken";
 import authService from "../services/authService.js";
-import { AUTH_COOKIE_NAME, TOKEN_SECRET } from "../constants.js"; 
+import { AUTH_COOKIE_NAME, TOKEN_SECRET } from "../constants.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
-import User from "../models/User.js";             
+import User from "../models/User.js";
 
 const authController = Router();
 
-// POST /api/auth/register
 authController.post("/register", async (req, res) => {
   try {
     const { username, email, password, rePassword } = req.body;
@@ -19,7 +18,6 @@ authController.post("/register", async (req, res) => {
   }
 });
 
-// POST /api/auth/login
 authController.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -31,13 +29,11 @@ authController.post("/login", async (req, res) => {
   }
 });
 
-// POST /api/auth/logout
 authController.post("/logout", (req, res) => {
   res.clearCookie(AUTH_COOKIE_NAME);
   res.json({ ok: true });
 });
 
-// GET /api/auth/me
 authController.get("/me", async (req, res) => {
   try {
     const token = req.cookies[AUTH_COOKIE_NAME];

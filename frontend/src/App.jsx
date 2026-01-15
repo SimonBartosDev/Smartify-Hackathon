@@ -8,7 +8,7 @@ import "./index.css";
 
 import Layout from "./layout/Layout.jsx";
 
-import PlanPage from './components/Planpage/Planpage.jsx';
+import PlanPage from "./components/PlanPage/PlanPage.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
 import About from "./components/About/About.jsx";

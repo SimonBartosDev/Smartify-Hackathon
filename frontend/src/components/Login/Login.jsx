@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext.jsx";
 
-function Login({setId}) {
+function Login({ setId }) {
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
@@ -17,7 +17,7 @@ function Login({setId}) {
     setError(null);
     setLoading(true);
 
-    const formEl = e.currentTarget;   // save form
+    const formEl = e.currentTarget;
     const form = new FormData(formEl);
     const body = {
       email: form.get("email").trim(),
@@ -28,7 +28,7 @@ function Login({setId}) {
       const res = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // needed for httpOnly cookie
+        credentials: "include",
         body: JSON.stringify(body),
       });
 
@@ -41,12 +41,10 @@ function Login({setId}) {
         throw new Error(data.error || "Invalid login");
       }
 
-      // Save user in context so navbar updates immediately
       setUser(data.user);
       setId(data.user._id);
-      console.log("plans loaded")
       formEl.reset();
-      navigate("/plan-page"); // redirect after login
+      navigate("/plan-page");
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {

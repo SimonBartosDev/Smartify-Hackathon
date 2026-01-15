@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./About.css";
 
 function About() {
+  const navigate = useNavigate();
+
+  const handleCreatePlan = () => {
+    navigate("/create");
+  };
+
   return (
     <section className="about-container">
       <h2>About Smartify</h2>
@@ -22,6 +29,10 @@ function About() {
         Stay motivated, track your progress, and make learning a daily habit — all
         in one simple app.
       </p>
+
+      <button className="create-plan-button" onClick={handleCreatePlan}>
+        Create Your Plan
+      </button>
 
       <div className="about-highlight">
         <p>🎯 <strong>Your goals, your time, your growth — Smartify makes it happen!</strong></p>

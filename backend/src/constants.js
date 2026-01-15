@@ -1,4 +1,3 @@
 export const AUTH_COOKIE_NAME = 'auth'
 export const JWT_EXPIRES_IN = "7d";
 export const TOKEN_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-//export const JWT_SECRET = dasde234rwsdef4365tu546234ef2345
