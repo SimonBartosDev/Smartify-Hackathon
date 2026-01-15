@@ -1,6 +1,6 @@
 # 🎯 Smartify - AI-Powered Learning Planner
 
-[![Hackathon Winner](https://img.shields.io/badge/Lahti%20Hackathon-Audience%20Favorite-gold?style=for-the-badge)](https://github.com/SimonBartosLUT/Smartify)
+[![Hackathon Winner](https://img.shields.io/badge/Lahti%20Hackathon-Audience%20Favorite-gold?style=for-the-badge)](https://github.com/SimonBartosDev/Smartify-Hackathon)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat&logo=react)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=node.js)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat&logo=mongodb)](https://www.mongodb.com/)
@@ -54,8 +54,8 @@ Built during the inaugural **Lahti Hackathon**, Smartify won **Audience Favorite
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/SimonBartosLUT/Smartify.git
-cd Smartify
+git clone https://github.com/SimonBartosDev/Smartify-Hackathon.git
+cd Smartify-Hackathon
 ```
 
 2. **Backend setup**
@@ -202,8 +202,8 @@ This project is available under the MIT License.
 
 **Simon Bartos**
 
-- GitHub: [@SimonBartosLUT](https://github.com/SimonBartosLUT)
-- Project: [Smartify](https://github.com/SimonBartosLUT/Smartify)
+- GitHub: [@SimonBartosDev](https://github.com/SimonBartosDev)
+- Project: [Smartify-Hackathon](https://github.com/SimonBartosDev/Smartify-Hackathon)
 
 ---
 
